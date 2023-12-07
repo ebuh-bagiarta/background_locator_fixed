@@ -104,7 +104,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         // Handler(it.mainLooper).postDelayed( { pluggables.forEach { context?.let { it1 -> it.onServiceStart(it1) } } }, 1000) // value in milliseconds )
         // Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
 
-        Handler(Looper.getMainLooper()).postDelayed( { pluggables.forEach { context?.let { it1 -> it.onServiceStart(it1) } } }, 1000) // value in milliseconds )
+        Handler(Looper.getMainLooper()).postDelayed( { pluggables.forEach { context?.let { it1 -> it.onServiceStart(it1) } } }, 3000) // value in milliseconds )
     }
 
     private fun getNotification(): Notification {
