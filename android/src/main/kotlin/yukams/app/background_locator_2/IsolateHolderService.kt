@@ -22,6 +22,8 @@ import yukams.app.background_locator_2.pluggables.Pluggable
 import yukams.app.background_locator_2.provider.*
 import java.util.HashMap
 import androidx.core.app.ActivityCompat
+import android.os.Looper
+
 
 class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateListener, Service() {
     companion object {
@@ -99,9 +101,10 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         // pluggables.forEach {
         //     context?.let { it1 -> it.onServiceStart(it1) }
         // }
-        Handler(it.mainLooper).postDelayed( { pluggables.forEach { context?.let { it1 -> it.onServiceStart(it1) } } }, 1000) // value in milliseconds )
+        // Handler(it.mainLooper).postDelayed( { pluggables.forEach { context?.let { it1 -> it.onServiceStart(it1) } } }, 1000) // value in milliseconds )
+        // Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
 
-        //Handler(Looper.getMainLooper()).postDelayed( { pluggables.forEach { context?.let { it1 -> it.onServiceStart(it1) } } }, 1000) // value in milliseconds )
+        Handler(Looper.getMainLooper()).postDelayed( { pluggables.forEach { context?.let { it1 -> it.onServiceStart(it1) } } }, 1000) // value in milliseconds )
     }
 
     private fun getNotification(): Notification {
